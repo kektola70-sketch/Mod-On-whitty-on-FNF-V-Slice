@@ -1,0 +1,54 @@
+// Whitty Mod Script для V-Slice
+import funkin.Paths;
+import funkin.play.PlayState;
+import funkin.play.character.BaseCharacter;
+import flixel.FlxG;
+
+var whitty:BaseCharacter;
+var camShakeIntensity:Float = 0;
+var isBallistic:Bool = false;
+
+function onCreate():Void {
+    trace("Whitty mod script loaded!");
+}
+
+function onSongStart():Void {
+    var songName = PlayState.instance.currentSong.songName;
+    
+    if (songName == "Ballistic") {
+        isBallistic = true;
+        trace("Ballistic mode activated!");
+    }
+}
+
+function onBeatHit(beat:Int):Void {
+    if (isBallistic && beat % 4 == 0) {
+        // Небольшая тряска камеры на каждый 4-й бит в Ballistic
+        FlxG.camera.shake(0.01, 0.1);
+    }
+}
+
+function onNoteHit(note:Note):Void {
+    if (isBallistic && note.mustPress) {
+        // Усиление тряски при попадании по ноте в Ballistic
+        FlxG.camera.shake(0.005, 0.05);
+    }
+}
+
+function onNoteMiss(note:Note):Void {
+    if (isBallistic) {
+        // Сильная тряска при промахе в Ballistic
+        FlxG.camera.shake(0.02, 0.2);
+    }
+}
+
+function onUpdate(elapsed:Float):Void {
+    // Дополнительная логика обновления
+    if (isBallistic) {
+        camShakeIntensity = FlxMath.lerp(camShakeIntensity, 0, elapsed * 2);
+    }
+}
+
+function onDestroy():Void {
+    trace("Whitty mod script destroyed!");
+}
