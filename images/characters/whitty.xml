@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="whitty.png">
+    <SubTexture name="Whitty idle dance0000" x="0" y="0" width="400" height="600"/>
+    <SubTexture name="Whitty idle dance0001" x="400" y="0" width="400" height="600"/>
+    
+    <SubTexture name="Whitty Sing Note LEFT0000" x="0" y="600" width="400" height="600"/>
+    <SubTexture name="Whitty Sing Note DOWN0000" x="400" y="600" width="400" height="600"/>
+    <SubTexture name="Whitty Sing Note UP0000" x="800" y="0" width="400" height="600"/>
+    <SubTexture name="Whitty Sing Note RIGHT0000" x="800" y="600" width="400" height="600"/>
+</TextureAtlas>
