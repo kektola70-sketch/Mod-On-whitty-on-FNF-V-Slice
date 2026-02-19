@@ -1,0 +1,28 @@
+// Автоматическая смена персонажа на crazy версию в Ballistic
+import funkin.play.PlayState;
+import funkin.play.character.BaseCharacter;
+
+var normalWhitty:String = "whitty";
+var crazyWhitty:String = "whitty-crazy";
+var swapped:Bool = false;
+
+function onSongStart():Void {
+    var songName = PlayState.instance.currentSong.songName;
+    
+    if (songName == "Ballistic" && !swapped) {
+        // Меняем персонажа на crazy версию
+        var dad = PlayState.instance.dad;
+        if (dad != null && dad.characterId == normalWhitty) {
+            PlayState.instance.switchCharacter(1, crazyWhitty);
+            swapped = true;
+            trace("Switched to crazy Whitty!");
+        }
+    }
+}
+
+function onCountdownStart():Void {
+    // Можно добавить предупреждение перед началом
+    if (PlayState.instance.currentSong.songName == "Ballistic") {
+        trace("GET READY FOR BALLISTIC!");
+    }
+}
