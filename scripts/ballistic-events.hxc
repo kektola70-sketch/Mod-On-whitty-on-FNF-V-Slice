@@ -1,0 +1,77 @@
+// Специальные эффекты для песни Ballistic
+import flixel.FlxG;
+import flixel.FlxCamera;
+import funkin.play.PlayState;
+
+var ballisticIntensity:Float = 0;
+var shakeTimer:Float = 0;
+var crazyMode:Bool = false;
+
+function onCreate():Void {
+    trace("Ballistic events script loaded!");
+}
+
+function onSongStart():Void {
+    if (PlayState.instance.currentSong.songName == "Ballistic") {
+        crazyMode = true;
+        // Увеличиваем zoom камеры
+        FlxG.camera.zoom = 1.05;
+    }
+}
+
+function onBeatHit(beat:Int):Void {
+    if (!crazyMode) return;
+    
+    // Каждые 4 бита - усиленная тряска
+    if (beat % 4 == 0) {
+        FlxG.camera.shake(0.015, 0.15);
+        ballisticIntensity = 1.0;
+    }
+    
+    // Пульсация zoom
+    if (beat % 2 == 0) {
+        FlxG.camera.zoom += 0.03;
+    }
+}
+
+function onStepHit(step:Int):Void {
+    if (!crazyMode) return;
+    
+    // Быстрая тряска на каждом шаге
+    if (step % 4 == 0) {
+        FlxG.camera.angle = FlxG.random.float(-0.5, 0.5);
+    }
+}
+
+function onNoteHit(note:Note):Void {
+    if (!crazyMode) return;
+    
+    // Дополнительные эффекты при попадании
+    if (note.mustPress) {
+        FlxG.camera.shake(0.008, 0.08);
+    }
+}
+
+function onUpdate(elapsed:Float):Void {
+    if (!crazyMode) return;
+    
+    // Плавное возвращение камеры к нормальному состоянию
+    FlxG.camera.angle = FlxMath.lerp(FlxG.camera.angle, 0, elapsed * 5);
+    ballisticIntensity = FlxMath.lerp(ballisticIntensity, 0, elapsed * 3);
+    
+    // Постоянная лёгкая тряска фона
+    shakeTimer += elapsed;
+    if (shakeTimer > 0.05) {
+        FlxG.camera.x = FlxG.random.float(-1, 1);
+        FlxG.camera.y = FlxG.random.float(-1, 1);
+        shakeTimer = 0;
+    }
+}
+
+function onDestroy():Void {
+    // Сброс камеры
+    FlxG.camera.angle = 0;
+    FlxG.camera.zoom = 1.0;
+    FlxG.camera.x = 0;
+    FlxG.camera.y = 0;
+}
