@@ -1,0 +1,35 @@
+// Дополнительный урон здоровью в Ballistic при промахах
+import funkin.play.PlayState;
+import flixel.FlxG;
+
+var drainActive:Bool = false;
+var drainAmount:Float = 0.003;
+
+function onSongStart():Void {
+    if (PlayState.instance.currentSong.songName == "Ballistic") {
+        drainActive = true;
+        trace("Health drain active!");
+    }
+}
+
+function onUpdate(elapsed:Float):Void {
+    if (drainActive) {
+        // Медленная потеря здоровья со временем
+        PlayState.instance.health -= drainAmount * elapsed;
+    }
+}
+
+function onNoteMiss(note:Note):Void {
+    if (drainActive) {
+        // Увеличенный урон при промахе
+        PlayState.instance.health -= 0.08;
+        FlxG.camera.shake(0.02, 0.3);
+    }
+}
+
+function onNoteHit(note:Note):Void {
+    if (drainActive && note.mustPress) {
+        // Небольшое восстановление при попадании
+        PlayState.instance.health += 0.01;
+    }
+}
