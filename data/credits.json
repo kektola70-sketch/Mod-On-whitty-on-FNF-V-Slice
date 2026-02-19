@@ -1,0 +1,28 @@
+{
+  "credits": [
+    {
+      "name": "sock.clip",
+      "role": "Music Composer",
+      "icon": "sockclip",
+      "link": "https://twitter.com/sock_clip"
+    },
+    {
+      "name": "Nate Anim8",
+      "role": "Artist & Animator",
+      "icon": "nate",
+      "link": "https://twitter.com/NateAnim8"
+    },
+    {
+      "name": "KadeDev",
+      "role": "Definitive Edition Programmer",
+      "icon": "kade",
+      "link": "https://twitter.com/KadeDeveloper"
+    },
+    {
+      "name": "tolikpro128",
+      "role": "V-Slice Port",
+      "icon": "_pollymod_icon.png",
+      "link": "https://github.com/kektola70-sketch"
+    }
+  ]
+}
