@@ -1,0 +1,22 @@
+// Модификаторы нот для Ballistic (увеличенная скорость)
+import funkin.play.notes.Note;
+import funkin.play.PlayState;
+
+var speedMultiplier:Float = 1.0;
+
+function onSongStart():Void {
+    if (PlayState.instance.currentSong.songName == "Ballistic") {
+        speedMultiplier = 1.2;
+        trace("Note speed increased!");
+    }
+}
+
+function onNoteCreate(note:Note):Void {
+    if (speedMultiplier > 1.0) {
+        note.scrollSpeed *= speedMultiplier;
+    }
+}
+
+function onUpdate(elapsed:Float):Void {
+    // Можно добавить визуальные эффекты для нот
+}
