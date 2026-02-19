@@ -1,0 +1,11 @@
+{
+  "healthBar": {
+    "whitty": {
+      "colorLeft": "#FF8000",
+      "colorRight": "#31B0D4",
+      "iconScale": 1.2,
+      "barStyle": "gradient",
+      "animateOnHit": true
+    }
+  }
+}
