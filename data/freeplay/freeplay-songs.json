@@ -1,0 +1,31 @@
+{
+  "songs": [
+    {
+      "songId": "lo-fight",
+      "songName": "Lo-Fight",
+      "artist": "sock.clip",
+      "album": "whitty",
+      "chartPath": "songs/lo-fight/lo-fight-chart.json",
+      "difficulties": ["easy", "normal", "hard"],
+      "unlocked": true
+    },
+    {
+      "songId": "overhead",
+      "songName": "Overhead",
+      "artist": "sock.clip",
+      "album": "whitty",
+      "chartPath": "songs/overhead/overhead-chart.json",
+      "difficulties": ["easy", "normal", "hard"],
+      "unlocked": true
+    },
+    {
+      "songId": "ballistic",
+      "songName": "Ballistic",
+      "artist": "sock.clip",
+      "album": "whitty",
+      "chartPath": "songs/ballistic/ballistic-chart.json",
+      "difficulties": ["normal", "hard"],
+      "unlocked": true
+    }
+  ]
+}
